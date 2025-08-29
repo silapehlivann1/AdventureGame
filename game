@@ -1,0 +1,73 @@
+// See https://aka.ms/new-console-template for more information
+Console.WriteLine("Welcome to the adventure game.");
+Console.WriteLine("Enter your character name: ");
+string character=Console.ReadLine();
+Console.WriteLine("Choose your character type. Warrior , Wizard , Archer");
+string type=Console.ReadLine();
+
+Console.WriteLine($"you {character} the {type} find yourself at the edge of dark forest.");
+Console.WriteLine("Do you enter the forest or come back the camp. forest / camp");
+string choice1=Console.ReadLine();
+
+if (choice1.ToLower()=="forest")
+{
+    Console.WriteLine("you bravely enter the forest.");
+}
+else
+{
+   Console.WriteLine("You decided to back the camp area and wait for daylight");
+}
+bool gamecontinues=true;
+while (gamecontinues)
+{
+    Console.WriteLine("you came to the fork in the road. left or right.");
+    string direction=Console.ReadLine();
+    if (direction.ToLower()=="left")
+    {
+        Console.WriteLine("you find the treasure chest!!");
+        
+        gamecontinues=false;
+    }
+    else
+    {
+        Console.WriteLine("you encounter a wild beast!.");
+        Console.WriteLine("fight or flee.");
+        string userchoice=Console.ReadLine();
+        if (userchoice.ToLower()=="fight")
+        {   
+            
+            Random random=new Random();
+            int randomnumber=random.Next(1, 11);
+            Console.WriteLine(randomnumber);
+            if (randomnumber<=5)
+            {
+                Console.WriteLine("you beat the wild beast.");
+                gamecontinues=false;
+
+                if (randomnumber>5)
+                {
+                    Console.WriteLine("the wild beast dropped a teasure");
+                    gamecontinues=false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("the beast attacked you where yo didnt expect it!!");
+                gamecontinues=false;
+            }
+          
+        }
+        
+        
+        else
+        {
+            Console.WriteLine("you died.");
+            gamecontinues=false;
+        }
+    }
+
+    
+}
+Console.WriteLine("game over.");
+
+Console.ReadKey();
